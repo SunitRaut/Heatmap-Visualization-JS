@@ -1,0 +1,82 @@
+<html>
+
+<head>
+<title>Heatmap Demo - Try It Out!</title>
+<!-- HeatMap JS Library -->
+<script src="https://svraut.github.io/heatmap-js/heatmap.js"></script>	
+<!-- PNGLib Library for JS. Check license on below link.-->
+<script src="https://www.xarg.org/download/pnglib.js"></script>
+<style>
+img {display:block;height:350px;border:4px #cecece solid;margin:auto;margin-bottom:5px;margin-top:5px}
+h1 {text-align:center;}
+</style>
+</head>
+
+<body>
+
+<script>
+//Array of locations - [latitude,longitude] or [x,y] coordinates
+var loc = [[19.0454,72.8891],[19.045,72.8893],[19.0459,72.8894],[19.0452,72.8897],[19.0458,72.8898],[19.0458,72.8903],[19.0452,72.8903]];
+//Array of Data - values should be bet
+var data = [0,78,0,5,83,5,100];
+
+//Create HeatMap Object
+var p = new HeatMap();
+
+//Returns array of heatmap region. 	
+var region = p.defineRegion(loc);
+//var region now contains an array of region covered by heatmap	
+//region[i][j]=1: (i,j) point lies inside heatmap region, region[i][j]=0: (i,j) point lies outside heatmap region.
+
+//Create image object to store PNG image
+var image = new PNGlib(p.vWidth, p.vHeight, 256); // PNGLib construcor takes height, weight and color-depth
+var background = image.color(0, 0, 0, 0); 	  // set the background transparent
+
+//p.vWidth, p.Height contains width and height of generated region
+//Looping through region to assign values to PNG image 	
+for (var i = 0; i < p.vWidth; i++) {
+		for (var j = 0; j < p.vHeight; j++) {
+			//region[i][j]==1 signifies that the point lies inside heatmap region
+			if(region[i][j]==1)
+			{
+				//Add Red color to all points in region
+				image.buffer[image.index(i , j)] = image.color(255, 0, 0);
+				
+			}//end of if
+		
+		}//end of for j
+	}//end of for i
+	
+document.write("<h1>Output of p.defineRegion(loc) </h1>");
+var imgOverLay = "data:image/png;base64,"+image.getBase64();
+document.write("<img src='"+imgOverLay+"'>");
+
+//Set Colour in [r,g,b] format for maximum and minimum values respectively. 
+//E.g. Here we have set red as color for maximum value and green for minimum.
+p.setMaxMin([255,0,0],[0,255,0]);
+
+//returns heatmap as a 3d array. heatmap[i][j][red|green|blue] 
+var heatmap = p.createHeatMap(data);
+
+	//looping through heatmap to assign color values to PNG image
+for (var i = 0; i < p.vWidth; i++) {
+		for (var j = 0; j < p.vHeight; j++) {
+			if(p.iMap[i][j]==1)
+			{
+				image.buffer[image.index(i , j)] = image.color(heatmap[i][j]['red'], heatmap[i][j]['green'], heatmap[i][j]['blue']);
+				
+			}//end of if
+		
+		}//end of for j
+	}//end of for i
+document.write("<h1>Output of p.createHeatMap(data) </h1>");
+imgOverLay = "data:image/png;base64,"+image.getBase64();
+document.write("<img src='"+imgOverLay+"'>");
+
+
+</script>
+
+
+
+</body>
+</html>
