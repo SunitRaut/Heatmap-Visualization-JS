@@ -5,7 +5,7 @@ How to use this library
 # Installation:
 
 Embed within html using <script> tag
-<script src="https://svraut.github.io/heatmap-js/heatmap.js"></script>
+<script src= "https://svraut.github.io/heatmap-js/heatmap.js" > </script>
 
 # Create HeatMap Object
 var p = new HeatMap();
