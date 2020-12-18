@@ -22,7 +22,7 @@ class HeatMap {
 		this.colorMax=[255,0,0];	//red
 		this.colorMin=[0,255,0];	//green
 		this.colorCase=[1,-1,0];
-		this.resolution = 20;
+		this.resolution = 50;
 		this.spread = 0.8;
 		//can be changed later using class methods 
 	}
@@ -304,7 +304,10 @@ class HeatMap {
 				  var ed2= Math.abs(this.LngPx[a]-i);//x axis
 				  var ed8 = ed1*ed1+ed2*ed2;
 				  var dd1 = Math.sqrt(ed8);//Distance between each node and sample point
+			var ddd1 = dd1;
 			
+			if(this.wind_speed>0)
+			{
 				var x=i;
 				var y=-1*j;
 				var x1=this.LngPx[a];
@@ -322,52 +325,18 @@ class HeatMap {
 
 				heading = (450-theta)%360;
 				var diff=0; 
-		if(heading-this.wind_dir<=180)
-				diff = Math.abs(heading - this.wind_dir);
-		else if (heading-this.wind_dir>=180)
-				diff = Math.abs(360-(heading-this.wind_dir))%180;
+				if(heading-this.wind_dir<=180)
+					diff = Math.abs(heading - this.wind_dir);
+				else if (heading-this.wind_dir>=180)
+					diff = Math.abs(360-(heading-this.wind_dir))%180;
 				//var ddd1 = Math.pow(((diff)/180),1)*dd1;
-				var ddd1 = (0.1)*(this.wind_speed)*Math.pow(((diff)/180),2)+dd1;
-
+				ddd1 = (0.1)*(this.wind_speed)*Math.pow(((diff)/180),2)+dd1;
+			}
+			
 				if((dd1)<(2*this.resolution)) {distances[wCount]=dd1;wei[wCount]=this.data[a];dis[wCount]=ddd1;wCount++;}
 				}//end of for a
 
-
 				sum=0;
-		/*
-				var d_min=parseInt(distances[0]);
-				for (var z=1;z<=wCount;z++)
-				{
-				if(d_min>parseInt(distances[z])) d_min=parseInt(distances[z]);
-				}
-		*/
-		//oMap[i][j]=Math.floor(255*(40-min(distances))/40)%256;
-		//oMap[i][j]=255;
-		//if(min(distances)>=30) {oMap[i][j]=50;}
-		//else if(min(distances)>=25) {oMap[i][j]=120;}
-		//else if(min(distances)>=20) {oMap[i][j]=200}
-
-		//if(min(distances)<20) {oMap[i][j]=255;}
-		//oMap[i][j]=255;
-		//if(min(distances)==0) console.log(wCount);
-		/*
-		if(wCount<=2) {oMap[i][j]=105;}
-		else{oMap[i][j]=255;}
-		if(wCount==4) oMap[i][j]=255;
-		*/
-
-		//else if(min(distances)<40.0) {oMap[i][j]=255;}
-		//else if(min(distances)<20.0) {/*console.log(min(distances));*/oMap[i][j]=155;}
-		//console.log(oMap[i][j]);
-		//else if(d_min>20) oMap[i][j]=100;
-		//oMap[i][j]=(255*(min(distances)/40))%256;
-		//oMap[i][j]=(255*((40-min(distances))/40))%256;
-		//console.log(min(distances));
-				//oMap[i][j]=150+(255/40)*(40-Math.floor(min(distances)));
-				//if(oMap[i][j]>255)oMap[i][j]=255;
-		//oMap[i][j]=40-min(distances);
-
-		//oMap[i][j]=255;
 
 				for(var bi=0;bi<dis.length;bi++)
 				{
@@ -388,22 +357,14 @@ class HeatMap {
 		  dSum+=mul;}
 		weight=0;
 		weight = sum/dSum;
-		//if(wCount>6){document.getElementById("demo").innerHTML+=dis+"||";}
-		//if (weight>100) {weight=100;}
-		//weight=Math.floor((255*weight)/100);
+
 		this.wMap[i][j]=weight;
-		/*
-		p[iBufferCount].buffer[p[iBufferCount].index(i , j)] = p[iBufferCount].color(p_red, p_green, p_blue);
-		*/	
 
 				}//end of if
 
 
 			}//end of for j 
 		}//end of for i
-
-		//............
-
 
 
 		var filter=[[1,1,1],[1,1,1],[1,1,1]];
@@ -415,33 +376,28 @@ class HeatMap {
 		if(this.iMap[i][j]!=0)
 		{
 			var sum=0;var fsum=0;
-				for(var a=0;a<9;a++){
-				var aa=Math.floor(a/3);var ab=a%3;
-				if(this.iMap[i+aa][j+ab]!=0)
-		{
-				sum+=this.wMap[i+aa][j+ab];
-				fsum+=1;
-				//filter[aa][ab];
-		}
+				for(var a=0;a<9;a++)
+				{
+					var aa=Math.floor(a/3);var ab=a%3;
+					if(this.iMap[i+aa][j+ab]!=0)
+					{
+						sum+=this.wMap[i+aa][j+ab];
+						fsum+=1;
+						//filter[aa][ab]
+					}
 
-		}//end of a
+				}//end of for a
+		
 		sum=sum/fsum;
-		//var w=wMap[i][j];
+		
 		var w=sum;
 		if (w>100) {w=100;}
-		//w=Math.floor((255*w)/100);
-		//var opacity;
-		//opacity=oMap[i][j];
-		//opacity=Math.floor((255/40)*oMap[i][j]);
-		//opacity=255;
-		//if(j>vHeight/2) opacity=255;
-		//else opacity=200;
-		//if(opacity==5) console.log(opacity);
+
 
 		//Decide colour coding here
 		this.wMap[i][j]=[];
-		this.wMap[i][j]['red'] = 20;
-		this.wMap[i][j]['green'] = 120;
+		this.wMap[i][j]['red'] = 0;
+		this.wMap[i][j]['green'] = 0;
 		this.wMap[i][j]['blue'] = 0;
 		var red,green,blue=0;
 		
