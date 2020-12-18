@@ -1,4 +1,19 @@
 # heatmap-js
 
-We are currently in the process of converting our source code o a reliable library for general purpose use. 
-We're done with upto 40% of work. In the coming weeks, the repository will be ready for use. 
+How to use this library
+
+# Installation:
+
+Embed within html using <script> tag
+<script src="https://svraut.github.io/heatmap-js/heatmap.js"></script>
+
+# Create HeatMap Object
+var p = new HeatMap();
+
+# Define Region for HeatMap
+var region = p.defineRegion(loc);
+
+# Create HeatMap by adding data to region
+var heatmap = p.createHeatMap(data);
+
+Check Demo here: https://svraut.github.io/heatmap-js/example
