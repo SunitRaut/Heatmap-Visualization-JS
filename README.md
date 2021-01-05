@@ -1,19 +1,21 @@
-# heatmap-js
+# Heatmap-Visualization-JS
 
-How to use this library
+A Heatmap Visualization Generation library for JavaScript
 
-# Installation:
+# How to use this library
+
+## Installation
 
 Embed within html using <script> tag
 <script src= "https://SunitRaut.github.io/heatmap-js/heatmap.js" > </script>
 
-# Create HeatMap Object
+### Create HeatMap Object
 var p = new HeatMap();
 
-# Define Region for HeatMap
+### Define Region for HeatMap
 var region = p.defineRegion(loc);
 
-# Create HeatMap by adding data to region
+### Create HeatMap by adding data to region
 var heatmap = p.createHeatMap(data);
 
 Check Demo here: https://SunitRaut.github.io/heatmap-js/example
