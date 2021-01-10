@@ -8,7 +8,7 @@ A Heatmap Visualization Generation library for JavaScript
 
 Embed within html using <script> tag
   
-<script src= "https://SunitRaut.github.io/heatmap-js/heatmap.js" > </script>
+<script src= "https://SunitRaut.github.io/Heatmap-Visualization-JS/heatmap.js" > </script>
 
 ### Create HeatMap Object
 var p = new HeatMap();
