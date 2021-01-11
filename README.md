@@ -1,4 +1,6 @@
 # Heatmap-Visualization-JS
+[![GitHub release](https://img.shields.io/github/release/SunitRaut/Heatmap-Visualization-JS.svg)](https://github.com/SunitRaut/Heatmap-Visualization-JS)
+[![license](https://img.shields.io/github/license/SunitRaut/Heatmap-Visualization-JS.svg)](https://github.com/SunitRaut/Heatmap-Visualization-JS/blob/master/LICENSE.txt)
 
 A Heatmap Visualization Generation library for JavaScript
 
