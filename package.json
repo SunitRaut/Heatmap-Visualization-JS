@@ -1,0 +1,16 @@
+{  
+  "name": "heatmap-visualization-library",  
+  "version": "1.0.2",  
+  "description": "A Heatmap Visualization Generation library for JavaScript",  
+  "main": "heatmap.js",  
+  "repository": {    
+    "type": "git",    
+    "url": "git+https://github.com/SunitRaut/Heatmap-Visualization-JS"  
+  },  
+  "author": "Sunit Raut (https://github.com/SunitRaut)",  
+  "license": "GPL-3.0",  
+  "bugs": {    
+    "url": "https://github.com/SunitRaut/Heatmap-Visualization-JS/issues"  
+  },  
+  "homepage": "https://github.com/SunitRaut/Heatmap-Visualization-JS"
+}
