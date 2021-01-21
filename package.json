@@ -2,7 +2,7 @@
   "name": "heatmap-visualization-library",  
   "version": "1.0.2",  
   "description": "A Heatmap Visualization Generation library for JavaScript",  
-  "main": "heatmap.js",  
+  "main": "heatmap-minified.js",  
   "repository": {    
     "type": "git",    
     "url": "git+https://github.com/SunitRaut/Heatmap-Visualization-JS"  
