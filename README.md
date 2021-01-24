@@ -14,7 +14,11 @@ Embed within html using <script> tag
 ```  
 <script src= "https://SunitRaut.github.io/Heatmap-Visualization-JS/heatmap.js" > </script>
 ```
-
+For faster download, you may embed the minified version instead
+```  
+<script src= "https://SunitRaut.github.io/Heatmap-Visualization-JS/heatmap-minified.js" > </script>
+```  
+  
 ### Create HeatMap Object
 ```
 var p = new HeatMap();
