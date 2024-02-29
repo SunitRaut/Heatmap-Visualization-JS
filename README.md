@@ -38,3 +38,11 @@ var heatmap = p.createHeatMap(data);
 ```
 
 Check Demo here: https://SunitRaut.github.io/Heatmap-Visualization-JS/example
+
+
+## If you Like my Work, Buy me a Coffee!
+
+If this library makes your life easier and has helped bring your project to reality, I would appreciate a small token of gratitude. Click on the below icon to contribute.
+
+<a href="https://www.buymeacoffee.com/sunitraut" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+
